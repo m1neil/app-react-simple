@@ -1,0 +1,26 @@
+@import "../mixins.scss";
+
+.app-filter {
+	display: flex;
+	// .app-filter__button
+	&__button {
+		padding: toRem(14) toRem(20) toRem(12);
+		border: 1px solid #c4c4c4;
+		color: #fff;
+		font-size: toRem(18);
+		font-weight: 500;
+		transition: all 0.3s;
+		&:hover {
+			background-color: #fff;
+			color: #263238;
+		}
+		&:first-child {
+			border-radius: toRem(10) 0 0 toRem(10);
+			border-right: 0;
+		}
+		&:last-child {
+			border-left: 0;
+			border-radius: 0 toRem(10) toRem(10) 0;
+		}
+	}
+}
