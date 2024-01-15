@@ -1,0 +1,35 @@
+@import "../../mixins";
+
+.app-searching {
+   border-radius: toRem(10);
+   background-color: rgba(255, 255, 255, 0.05);
+   padding: toRem(24) toRem(30);
+   &:not(:last-child) {
+      margin-bottom: toRem(25);
+   }
+
+   &__input {
+      width: 100%;
+      height: toRem(50);
+      border-radius: toRem(5);
+      background-color: #FFF;
+      padding: 0 toRem(25);
+      transition: all 0.3s;
+      outline: 2px solid transparent;
+      outline-offset: toRem(2);
+      &::placeholder {
+         color: #263238;
+         transition: all 0.3s;
+      }
+      &:focus {
+         outline-color: #23B123;
+      }
+      &:focus::placeholder {
+         opacity: 0;
+      }
+      &:not(:last-child) {
+         margin-bottom: toRem(25);
+      }
+   }
+}
+

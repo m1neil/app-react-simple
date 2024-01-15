@@ -1,0 +1,62 @@
+@import "../../mixins";
+
+.app-item {
+   display: grid;
+   align-items: center;
+   grid-template-columns: 2fr 1fr 1fr;
+   gap: toRem(20);
+   padding: toRem(20) toRem(30);
+   &:not(:last-child) {
+      border-bottom: 1px solid #23B123;
+   }
+   // .app-item__name
+   &__name {
+      font-size: toRem(22);
+   }
+
+   // .app-item__salary
+   &__salary {
+      font-size: toRem(18);
+      padding: toRem(10) toRem(10) toRem(7);
+      transition: all 0.3s;
+      border-radius: toRem(3);
+      outline: 2px solid transparent;
+      outline-offset: toRem(2);
+      color: #263238;
+      &::placeholder {
+         color: #263238;
+         transition: all 0.3s;
+      }
+      &:focus {
+         outline-color: #23B123;
+         &::placeholder {
+            opacity: 0;
+         }
+      }
+   }
+
+   // .app-item__actions
+   &__actions {
+      display: flex;
+      justify-content: flex-end;
+      column-gap: toRem(10);
+   }
+
+   // .app-item__button
+   &__button {
+      border-radius: toRem(5);
+      width: toRem(35);
+      height: toRem(35);
+      padding: toRem(5);
+      background-color: darkgrey;
+      transition: all 0.3s;
+      img {
+         max-width: 100%;
+      }
+
+      &--transparent-bg {
+         background-color: transparent;
+         opacity: 1; // TODO: will do opacity: 0
+      }
+   }
+}

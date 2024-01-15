@@ -1,0 +1,57 @@
+@import "../../mixins";
+
+.app-form {
+   border-radius: toRem(20);
+   background: rgba(255, 255, 255, 0.07);
+   padding: toRem(30) toRem(24);
+   // .app-form__title
+   &__title {
+      color: #FFF;
+      font-size: toRem(35);
+      font-weight: 700;
+      margin-bottom: toRem(20);
+   }
+}
+
+.form {
+   display: flex;
+   align-items: center;
+   column-gap: toRem(15);
+   // .form__input
+   &__input {
+      flex: 0 1 toRem(300);
+      height: toRem(50);
+      border-radius: toRem(5);
+      background-color: #FFF;
+      padding: 0 toRem(25);
+      transition: all 0.3s;
+      outline: 2px solid transparent;
+      outline-offset: toRem(2);
+      &::placeholder {
+         color: #263238;
+         transition: all 0.3s;
+      }
+      &:focus {
+         outline-color: #23B123;
+      }
+      &:focus::placeholder {
+         opacity: 0;
+      }
+   }
+
+   // .form__button
+   &__button {
+      text-align: center;
+      padding: toRem(12) toRem(20) toRem(10);
+      border: 1px solid #c4c4c4;
+      color: #fff;
+      font-size: toRem(18);
+      font-weight: 500;
+      transition: all 0.3s;
+      border-radius: toRem(5);
+      &:hover {
+         background-color: #fff;
+         color: #263238;
+      }
+   }
+}
