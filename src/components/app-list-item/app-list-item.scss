@@ -16,6 +16,7 @@
 
    // .app-item__salary
    &__salary {
+      max-width: toRem(215);
       font-size: toRem(18);
       padding: toRem(10) toRem(10) toRem(7);
       transition: all 0.3s;
@@ -32,6 +33,13 @@
          &::placeholder {
             opacity: 0;
          }
+      }
+   }
+
+   &__name, &__salary {
+      ._favorite & {
+         color: #23B123;
+         font-weight: 600;
       }
    }
 
@@ -56,7 +64,7 @@
 
       &--transparent-bg {
          background-color: transparent;
-         opacity: 1; // TODO: will do opacity: 0
+         opacity: 0; // TODO: will do opacity: 0
       }
    }
 }

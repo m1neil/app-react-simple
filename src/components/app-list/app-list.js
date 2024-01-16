@@ -1,12 +1,16 @@
 import "./app-list.scss";
 import AppListItem from "../app-list-item/app-list-item";
 
-const AppList = () => {
+const AppList = ({data}) => {
+
+   const arrayElements = data.map(item => {
+      const {id, ...otherParameters} = item;
+      return <AppListItem {...otherParameters} key={id}/>;
+   });
+
    return (
       <ul className="app-list">
-         <AppListItem/>
-         <AppListItem/>
-         <AppListItem/>
+         {arrayElements}
       </ul>
    );
 }

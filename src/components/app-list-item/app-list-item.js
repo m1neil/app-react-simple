@@ -1,23 +1,26 @@
 import './app-list-item.scss';
-import favorite from '../../img/favorite.svg';
-import star from '../../img/star.svg';
-import trash from '../../img/trash.svg';
+import imageFavorite from '../../img/favorite.svg';
+import imageStar from '../../img/star.svg';
+import imageTrash from '../../img/trash.svg';
 
-const AppListItem = () => {
+const AppListItem = ({name, salary, favorite}) => {
+   let classList = 'app-item';
+   if (favorite) classList += ' _favorite';
+
    return (
-      <li className="app-item">
-         <div className="app-item__name">John C.</div>
-         <input type="text" className="app-item__salary" defaultValue="800" placeholder="salary..."/>
+      <li className={classList}>
+         <div className="app-item__name">{name}</div>
+         <input type="text" className="app-item__salary" defaultValue={salary + '$'} placeholder="salary..."/>
          <div className="app-item__actions">
             <button className="app-item__button">
-               <img src={favorite} alt="button favorite"/>
+               <img src={imageFavorite} alt="button favorite"/>
             </button>
             <button className="app-item__button">
-               <img src={trash} alt="button delete"/>
+               <img src={imageTrash} alt="button delete"/>
             </button>
-            <button className="app-item__button app-item__button--transparent-bg">
-               <img src={star} alt="button like"/>
-            </button>
+            <span className="app-item__button app-item__button--transparent-bg">
+               <img src={imageStar} alt="button like"/>
+            </span>
          </div>
       </li>
    )
