@@ -12,6 +12,9 @@
    // .app-item__name
    &__name {
       font-size: toRem(22);
+      span {
+         cursor: pointer;
+      }
    }
 
    // .app-item__salary
@@ -19,7 +22,7 @@
       max-width: toRem(215);
       font-size: toRem(18);
       padding: toRem(10) toRem(10) toRem(7);
-      transition: all 0.3s;
+      transition: outline 0.3s;
       border-radius: toRem(3);
       outline: 2px solid transparent;
       outline-offset: toRem(2);
@@ -65,6 +68,10 @@
       &--transparent-bg {
          background-color: transparent;
          opacity: 0; // TODO: will do opacity: 0
+         transition: opacity 0.3s;
+         ._like & {
+            opacity: 1;
+         }
       }
    }
 }
