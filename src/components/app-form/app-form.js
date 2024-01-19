@@ -16,13 +16,26 @@ class AppForm extends Component {
 		}));
 	}
 
+	onSubmitForm = (event) => {
+		event.preventDefault();
+		const { name, salary } = this.state;
+		if (!name.trim().length || !salary.trim().length) return;
+
+		this.props.onAddEmployee(name, salary);
+
+		this.setState({
+			name: '',
+			salary: ''
+		});
+	}
+
 	render() {
 		const { name, salary } = this.state;
 
 		return (
 			<div className="app-form">
 				<div className="app-form__title">Add new employee</div>
-				<form action="#" className="app-form form">
+				<form onSubmit={this.onSubmitForm} action="#" className="app-form form">
 					<input
 						onChange={this.onUpdateInputs}
 						value={name}

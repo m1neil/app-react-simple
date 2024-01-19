@@ -1,10 +1,10 @@
 import "./app-list.scss";
 import AppListItem from "../app-list-item/app-list-item";
 
-const AppList = ({ data }) => {
+const AppList = ({ data, onDeleteEmployee }) => {
 	const arrayElements = data.map(item => {
 		const { id, ...otherParameters } = item;
-		return <AppListItem {...otherParameters} key={id} />;
+		return <AppListItem {...otherParameters} onDeleteEmployee={() => onDeleteEmployee(id)} key={id} />;
 	});
 
 	return (

@@ -26,7 +26,7 @@ class AppListItem extends Component {
 	}
 
 	render() {
-		const { name, salary } = this.props;
+		const { name, salary, onDeleteEmployee } = this.props;
 		const { favorite, like } = this.state;
 
 		let classList = 'app-item';
@@ -44,7 +44,7 @@ class AppListItem extends Component {
 						<img src={imageFavorite} alt="button favorite" />
 					</button>
 					<button className="app-item__button">
-						<img src={imageTrash} alt="button delete" />
+						<img src={imageTrash} onClick={onDeleteEmployee} alt="button delete" />
 					</button>
 					<span className="app-item__button app-item__button--transparent-bg">
 						<img src={imageStar} alt="button like" />
