@@ -57,16 +57,29 @@ class App extends Component {
 		}));
 	}
 
+	onToggleState = (id, key) => {
+		this.setState(({ data }) => ({
+			data: data.map(item => {
+				if (item.id === id) {
+					return { ...item, [key]: !item[key] }
+				}
+				return item;
+			})
+		}));
+	}
+
 	render() {
+		const countLikeEmployees = this.state.data.filter(item => item.like).length;
+
 		return (
 			<div className="app" >
 				<div className="app__container">
-					<AppInfo />
+					<AppInfo countEmployees={this.state.data.length} countLikeEmployees={countLikeEmployees} />
 					<div className="app-searching">
 						<AppInputSearch />
 						<AppFilter />
 					</div>
-					<AppList data={this.state.data} onDeleteEmployee={this.onDeleteEmployee} />
+					<AppList data={this.state.data} onDeleteEmployee={this.onDeleteEmployee} onToggleState={this.onToggleState} />
 					<AppForm onAddEmployee={this.onAddEmployee} />
 				</div>
 			</div>
