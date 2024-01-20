@@ -33,7 +33,9 @@ class App extends Component {
 					favorite: true,
 					like: false
 				},
-			]
+			],
+			strSearch: '',
+			currentFilter: 'all'
 		}
 		this.maxId = this.state.data.length;
 	}
@@ -68,18 +70,48 @@ class App extends Component {
 		}));
 	}
 
+	updateStrSearch = (str) => {
+		this.setState({
+			strSearch: str
+		});
+	}
+
+	filterDataBehindSearch = (data, strSearch) => {
+		if (!strSearch.length) return data;
+		return data.filter(item => item.name.startsWith(strSearch));
+	}
+
+	onChangeFilter = (event) => {
+		this.setState({
+			currentFilter:  event.target.getAttribute('data-filter')
+		});
+	}
+
+	filterDataBehindFilter = (data, currentFilter) => {
+		switch (currentFilter) {
+			case 'promotion':
+				return data.filter(item => item.like);
+			case 'moreThanThousand':
+				return data.filter(item => item.salary > 1000);
+			default:
+				return data
+		}
+	}
+
 	render() {
 		const countLikeEmployees = this.state.data.filter(item => item.like).length;
+		const {data, strSearch, currentFilter} = this.state;
+		const filterData = this.filterDataBehindFilter(this.filterDataBehindSearch(data, strSearch), currentFilter);
 
 		return (
 			<div className="app" >
 				<div className="app__container">
-					<AppInfo countEmployees={this.state.data.length} countLikeEmployees={countLikeEmployees} />
+					<AppInfo countEmployees={data.length} countLikeEmployees={countLikeEmployees} />
 					<div className="app-searching">
-						<AppInputSearch />
-						<AppFilter />
+						<AppInputSearch updateStrSearch={this.updateStrSearch}/>
+						<AppFilter onChangeFilter={this.onChangeFilter} currentFilter={currentFilter} />
 					</div>
-					<AppList data={this.state.data} onDeleteEmployee={this.onDeleteEmployee} onToggleState={this.onToggleState} />
+					<AppList data={filterData} onDeleteEmployee={this.onDeleteEmployee} onToggleState={this.onToggleState} />
 					<AppForm onAddEmployee={this.onAddEmployee} />
 				</div>
 			</div>
