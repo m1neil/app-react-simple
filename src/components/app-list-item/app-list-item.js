@@ -4,24 +4,20 @@ import imageTrash from '../../img/trash.svg';
 
 import './app-list-item.scss';
 
-const AppListItem = ({ name, salary, onDeleteEmployee, favorite, like, onToggleState, id }) => {
+const AppListItem = ({ name, salary, onDeleteEmployee, favorite, like, onToggleState }) => {
 
 	let classList = 'app-item';
 	if (favorite) classList += ' _favorite';
 	if (like) classList += ' _like';
 
-	const onClickButton = (event) => {
-		onToggleState(id, event.currentTarget.getAttribute('data-name'));
-	}
-
 	return (
 		<li className={classList}>
 			<div className="app-item__name">
-				<span data-name="like" onClick={onClickButton} >{name}</span>
+				<span data-name="like" onClick={onToggleState}>{name}</span>
 			</div>
 			<input type="text" className="app-item__salary" defaultValue={salary + '$'} placeholder="salary..." />
 			<div className="app-item__actions">
-				<button onClick={onClickButton} data-name="favorite" className="app-item__button">
+				<button onClick={onToggleState} data-name="favorite" className="app-item__button">
 					<img src={imageFavorite} alt="button favorite" />
 				</button>
 				<button className="app-item__button">
